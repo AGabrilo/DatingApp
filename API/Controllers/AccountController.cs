@@ -41,7 +41,8 @@ namespace API.Controllers
             {
                 Username = user.UserName,
                 Token = _tokenService.CreateToken(user),
-                KnownAs=user.KnownAs
+                KnownAs=user.KnownAs,
+                Gender=user.Gender
             };
         }
         //method for registering a new user
@@ -65,7 +66,8 @@ namespace API.Controllers
             {
                 Username = user.UserName,
                 Token = _tokenService.CreateToken(user),
-                KnownAs=user.KnownAs
+                KnownAs=user.KnownAs,
+                Gender=user.Gender
             };
         }
         private async Task<bool> UserExists(string username)
