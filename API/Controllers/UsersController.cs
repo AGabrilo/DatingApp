@@ -31,6 +31,7 @@ namespace API.Controllers
 
 
         }
+        
         [HttpGet] //because we are getting data from this controller
 
         //sending list of users
@@ -49,8 +50,8 @@ namespace API.Controllers
             return Ok(users);
 
         }
-
-        [HttpGet("{username}")]  //api/users/3 for example
+        
+        [HttpGet("{username}", Name="GetUser")]  //api/users/3 for example
         public async Task<ActionResult<MemberDto>> GetUsers(string username)
         {
            return await _userRepository.GetMemberAsync(username);

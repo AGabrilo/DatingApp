@@ -8,9 +8,7 @@ import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import { PaginationModule} from 'ngx-bootstrap/pagination';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { TimeagoModule } from 'ngx-timeago';
-import { AngularFireStorageModule} from '@angular/fire/storage';
-import { AngularFireModule} from '@angular/fire';
-
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 @NgModule({
@@ -27,15 +25,8 @@ import { AngularFireModule} from '@angular/fire';
     PaginationModule.forRoot(),
     ButtonsModule.forRoot(),
     TimeagoModule.forRoot(),
-    AngularFireStorageModule,
-    AngularFireModule.initializeApp({apiKey: "AIzaSyCaxkjDYdObg3enEGzH5cawUutETdV7BAE",
-    authDomain: "angular-image-gallery-de87b.firebaseapp.com",
-    databaseURL: "https://angular-image-gallery-de87b-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "angular-image-gallery-de87b",
-    storageBucket: "angular-image-gallery-de87b.appspot.com",
-    messagingSenderId: "937664650280",
-    appId: "1:937664650280:web:4b364927abb10f4fed691d",
-    measurementId: "G-BNEBHJ44KT"})
+    ModalModule.forRoot()
+    
   ],
   exports: [
     BsDropdownModule,
@@ -46,8 +37,8 @@ import { AngularFireModule} from '@angular/fire';
     PaginationModule,
     ButtonsModule,
     TimeagoModule,
-    AngularFireStorageModule,
-    AngularFireModule
+    ModalModule
+   
   ]
 })
 export class SharedModule { }
