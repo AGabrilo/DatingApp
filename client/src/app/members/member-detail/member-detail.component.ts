@@ -4,7 +4,6 @@ import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov
 import { Member } from 'src/app/_models/member';
 import { Photo } from 'src/app/_models/photo';
 import { MembersService } from 'src/app/_services/members.service';
-import { AngularFireStorage, AngularFireStorageModule} from '@angular/fire/storage';
 import { TabDirective, TabsetComponent } from 'ngx-bootstrap/tabs';
 import { Message } from 'src/app/_models/message';
 import { MessageService } from 'src/app/_services/message.service';
@@ -15,16 +14,14 @@ import { MessageService } from 'src/app/_services/message.service';
   styleUrls: ['./member-detail.component.css']
 })
 export class MemberDetailComponent implements OnInit {
-  @ViewChild('memberTabs', {static :true}) memberTabs: TabsetComponent;
-  member:Member;
+  @ViewChild('memberTabs', {static: true}) memberTabs: TabsetComponent;
+  member: Member;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
-  photo: Photo;
-  path:string;
   activeTab: TabDirective;
-  messages: Message[]=[];
+  messages: Message[] = [];
 
-  constructor(private memberService: MembersService,private route: ActivatedRoute,private angularFireStorage:AngularFireStorage, private messageService: MessageService) { }
+  constructor(private memberService: MembersService,private route: ActivatedRoute, private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.route.data.subscribe(data => {
@@ -47,9 +44,9 @@ export class MemberDetailComponent implements OnInit {
     this.galleryImages=this.getImages();
   }
 
-  getImages(): NgxGalleryImage[]{
-    const imageUrls=[];
-    for(const photo of this.member.photos){
+  getImages(): NgxGalleryImage[] {
+    const imageUrls = [];
+    for (const photo of this.member.photos) {
       imageUrls.push({
         small: photo?.url,
         medium: photo?.url,
@@ -59,31 +56,21 @@ export class MemberDetailComponent implements OnInit {
     return imageUrls;
   }
 
-  loadMessages(){
+  loadMessages() {
     this.messageService.getMessageThread(this.member.username).subscribe(messages => {
-      this.messages=messages;
+      this.messages = messages;
     })
   }
 
-  onTabActivated(data: TabDirective){
-    this.activeTab=data;
-    if(this.activeTab.heading==='Messages'&& this.messages.length === 0){
-   this.loadMessages();
-    }
-  }
-
-
-
-  upload($event){
-   this.path=$event.target.files[0];
-  }
-
-  uploadPhoto(){
-     console.log(this.path);
-     this.angularFireStorage.upload("/"+Math.random()+this.path,this.path);
-  }
-  selectTab(tabId:number) {
+  selectTab(tabId: number) {
     this.memberTabs.tabs[tabId].active = true;
+  }
+
+  onTabActivated(data: TabDirective) {
+    this.activeTab = data;
+    if (this.activeTab.heading === 'Messages' && this.messages.length === 0) {
+      this.loadMessages();
+    }
   }
 
 }

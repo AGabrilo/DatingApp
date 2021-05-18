@@ -1,7 +1,5 @@
-using System.Security.Cryptography;
-using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
-using API.Data;
 using API.DTOs;
 using API.Entities;
 using API.Interfaces;
@@ -45,6 +43,7 @@ namespace API.Controllers
             {
                 Username = user.UserName,
                 Token =await  _tokenService.CreateToken(user),
+                PhotoUrl=user.Photos.FirstOrDefault(x => x.IsMain)?.Url,
                 KnownAs = user.KnownAs,
                 Gender = user.Gender
             };
