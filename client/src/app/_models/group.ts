@@ -1,4 +1,4 @@
-export interface Group{
+export interface Group {
     name: string;
     connections: Connection[]
 }
