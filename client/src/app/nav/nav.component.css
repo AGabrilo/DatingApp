@@ -1,10 +1,33 @@
-.dropdown-toggle, .dropdown-item{
+  .dropdown-toggle, .dropdown-item {
     cursor: pointer;
-    
 }
 
-img{
+img {
     max-height: 50px;
     border: 2px solid #fff;
     display: inline;
 }
+
+.navbar{
+  background-color: #e95420;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 50px;
+}
+
+.navbar-brand{
+  font-weight: bold;
+  font-size: 21px;
+}
+
+.nav-link{
+  font-size: 18px;
+}
+
+.form-control{
+  border-radius: 15px;
+}
+
+
