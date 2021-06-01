@@ -9,7 +9,7 @@ img {
 }
 
 .navbar{
-  background-color: #e95420;
+  background-color: #593196;
   height: 50px;
   display: flex;
   justify-content: space-between;
@@ -29,5 +29,4 @@ img {
 .form-control{
   border-radius: 15px;
 }
-
 

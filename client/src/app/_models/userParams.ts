@@ -5,7 +5,7 @@ gender: string;
 minAge= 18;
 maxAge= 99;
 pageNumber=1;
-pageSize= 4;
+pageSize= 8;
 orderBy = 'lastActive';
 
 constructor(user: User){
