@@ -1,18 +1,67 @@
-<div class="container mt-5">
-    <div *ngIf="!registerMode" style="text-align: center;">
-        <h1>Find your match</h1>
-        <p class="lead">Come on in to view your matches... all you need to do is sign up!</p>
-        <div class="text-center">
-            <button (click)="registerToggle()" class="btn btn-primary btn-lg mr-2">Register</button>
-            <button class="btn btn-info btn-lg">Learn more</button>
-        </div>
-    </div>
+<div class="home-page">
 
-    <div *ngIf="registerMode" class="container">
-        <div class="row justify-content-center">
-            <div class="col-4">
-               <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
-            </div>
-        </div>
+    <div class="home" *ngIf="!registerMode" style="text-align: center;">
+      <h1>Find your match</h1>
+      <div class="text-center">
+        <button (click)="openRegisterModal()" class="btn btn-primary btn-lg mr-2">Create account</button>
+      </div>
     </div>
-</div>
+  
+    <div *ngIf="registerMode" class="container">
+      <div class="row justify-content-center">
+        <div class="col-4">
+          <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="column">
+        <div class="card">
+          <h2>Lina Matesh</h2>
+          <hr>
+          <p>"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore harum sit, eius suscipit possimus
+            perferendis ducimus,
+            tempora magnam recusandae ratione tempore temporibus quos eveniet quae reiciendis minus soluta nesciunt
+            debitis?"</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card">
+          <h2>Morgan Green</h2>
+          <hr>
+          <p>"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore harum sit, eius suscipit possimus
+            perferendis ducimus,
+            tempora magnam recusandae ratione tempore temporibus quos eveniet quae reiciendis minus soluta nesciunt
+            debitis?"</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card">
+          <h2>Lucy Scott</h2>
+          <hr>
+          <p>"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore harum sit, eius suscipit possimus
+            perferendis ducimus,
+            tempora magnam recusandae ratione tempore temporibus quos eveniet quae reiciendis minus soluta nesciunt
+            debitis?"</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card">
+          <h2>Mike Peterson</h2>
+          <hr>
+          <p>"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore harum sit, eius suscipit possimus
+            perferendis ducimus,
+            tempora magnam recusandae ratione tempore temporibus quos eveniet quae reiciendis minus soluta nesciunt
+            debitis?"</p>
+        </div>
+      </div>
+  
+    </div>
+    <hr>
+  </div>
+  
+  
+  

@@ -1,0 +1,50 @@
+.home-page{
+    padding-top: 45px;
+    height: 660px;
+    background-image:linear-gradient(to bottom,rgb(33, 33, 33),transparent),url("/assets/home2.jpg") ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 5px 10px 18px #888888;
+}
+
+.home{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 400px;
+}
+
+h1{
+    color: white;
+    font-size: 1.5cm;
+}
+.container{
+    margin-top: 70px;
+}
+
+  /* Float four columns side by side */
+.column {
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+  }
+  
+  /* Remove extra left and right margins, due to padding in columns */
+  .row {margin: 0 -5px;}
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f8f7f7;
+  }
+   

@@ -5,6 +5,7 @@ import { map, take } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Member } from '../_models/member';
 import { PaginatedResult } from '../_models/pagination';
+import { Rating } from '../_models/rating';
 import { User } from '../_models/user';
 import { UserParams } from '../_models/userParams';
 import { AccountService } from './account.service';
@@ -96,6 +97,20 @@ export class MembersService {
     let params = getPaginationHeaders(pageNumber, pageSize);
     params = params.append('predicate', predicate);
     return getPaginatedResult<Partial<Member[]>>(this.baseUrl + 'likes', params, this.http);
+  }
+
+  addRating(username:string, value: number) { 
+    return this.http.post(this.baseUrl + 'ratings/' + username + '/rateValue/' + value,{}); 
+  } 
+
+  getRate(){
+    return this.http.get<Partial<Member[]>>(this.baseUrl + 'ratings/users-with-ratings')
+  }
+
+  getR(predicate: string, pageNumber, pageSize) {
+    let params = getPaginationHeaders(pageNumber, pageSize);
+    params = params.append('predicate', predicate);
+    return getPaginatedResult<Partial<User[]>>(this.baseUrl + 'ratings', params, this.http);
   }
 
 

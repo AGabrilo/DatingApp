@@ -14,6 +14,7 @@ import { Photo } from "./photo";
     interests:    string;
     city:         string;
     country:      string;
+    rateValue:    number;
     photos:       Photo[];
 }
 

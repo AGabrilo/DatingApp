@@ -7,6 +7,7 @@ import { MembersService } from 'src/app/_services/members.service';
 import { TabDirective, TabsetComponent } from 'ngx-bootstrap/tabs';
 import { Message } from 'src/app/_models/message';
 import { MessageService } from 'src/app/_services/message.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-member-detail',
@@ -20,8 +21,18 @@ export class MemberDetailComponent implements OnInit {
   galleryImages: NgxGalleryImage[];
   activeTab: TabDirective;
   messages: Message[] = [];
+  max = 5;
+  rate = 0;
+  isReadonly = false;
+  ratingValue: number;
+  username: string;
+  
 
-  constructor(private memberService: MembersService,private route: ActivatedRoute, private messageService: MessageService) { }
+  overStar: number | undefined;
+  percent: number;
+
+
+  constructor(private memberService: MembersService,private toastr: ToastrService,private route: ActivatedRoute, private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.route.data.subscribe(data => {
@@ -71,6 +82,21 @@ export class MemberDetailComponent implements OnInit {
     if (this.activeTab.heading === 'Messages' && this.messages.length === 0) {
       this.loadMessages();
     }
+  }
+
+  hoveringOver(value: number): void {
+    this.overStar = value;
+  }
+ 
+  resetStar(): void {
+    this.overStar = void 0;
+  }
+   addRating(member: Member,rate: number) {
+    this.ratingValue=rate;
+    console.log(this.ratingValue);
+    this.memberService.addRating(member.username,this.ratingValue).subscribe(() => {
+      this.toastr.success('You have rated ' + member.knownAs);
+    })
   }
 
 }

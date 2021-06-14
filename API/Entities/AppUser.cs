@@ -24,6 +24,8 @@ namespace API.Entities
         public ICollection<Message> MessagesSent { get; set; }
         public ICollection<Message> MessagesReceived { get; set; }
         public ICollection<AppUserRole> UserRoles { get; set; }
+        public ICollection<Rating> RatedByUsers { get; set; }
+        public ICollection<Rating> RatedUsers { get; set; }
 
     }
 }

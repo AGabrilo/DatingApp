@@ -32,6 +32,8 @@ import { UserManagementComponent } from './admin/user-management/user-management
 import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
 import { RolesModalComponent } from './modals/roles-modal/roles-modal.component';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+import { RatingComponent } from './rating/rating.component';
+import { RegisterModalComponent } from './modals/register-modal/register-modal.component';
 
 
 @NgModule({
@@ -57,7 +59,9 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
     UserManagementComponent,
     PhotoManagementComponent,
     RolesModalComponent,
-    PhotoEditorComponent
+    PhotoEditorComponent,
+    RatingComponent,
+    RegisterModalComponent
   ],
   imports: [
     BrowserModule,

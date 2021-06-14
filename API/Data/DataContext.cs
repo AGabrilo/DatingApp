@@ -17,10 +17,26 @@ namespace API.Data
 
         public DbSet<UserLike> Likes { get; set; }
         public DbSet<Message> Messages { get; set; }
+         public DbSet<Rating> Ratings { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<Rating>()
+                .HasKey(k => new { k.RatingUserId, k.RatedUserId });
+
+            builder.Entity<Rating>()
+                .HasOne(s => s.RatingUser)
+                .WithMany(l => l.RatedUsers)
+                .HasForeignKey(s => s.RatingUserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Rating>()
+                .HasOne(s => s.RatedUser)
+                .WithMany(l => l.RatedByUsers)
+                .HasForeignKey(s => s.RatedUserId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<AppUser>()
             .HasMany(ur => ur.UserRoles)
