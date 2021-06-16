@@ -50,6 +50,7 @@ namespace API.Controllers
             var userRate = await _ratingRepository.GetUserRating(ratingUserId, ratedUser.Id);
 
             if (userRate != null) return BadRequest("You already rated this user");
+            
 
             userRate = new Rating
             {
@@ -73,21 +74,15 @@ namespace API.Controllers
 
 
         [HttpGet("users-with-ratings")]
-        public async Task<ActionResult> GetUserRatings([FromQuery] RatingParams ratingParams)
+        public async Task<ActionResult> GetUserRatings()
         {
-            ratingParams.UserId = User.GetUserId();
-            var ratings = await _context.Ratings.Where(r => r.RatedUserId==ratingParams.UserId).Select(r => r.RateValue ).ToListAsync();
+            var ratings = await _userManager.Users.Include(r => r.RatedByUsers).Select(u => new {
+               u.Id,
+               Username=u.UserName,
+               ratings=u.RatedByUsers.Select(r=> r.RateValue).ToList()
+           }).ToListAsync();
             return Ok(ratings);
         }
-
-        //   [HttpGet]
-        // public async Task<ActionResult<IEnumerable<RatingDto>>> GetUserRatings([FromQuery]RatingParams ratingParams)
-        // {
-        //     ratingParams.UserId=User.GetUserId();
-        //     var users= await _ratingRepository.GetUserRatings(ratingParams);
-        //     Response.AddPaginationHeader(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages);
-        //     return Ok(users);
-        // }
-
+        
     }
 }

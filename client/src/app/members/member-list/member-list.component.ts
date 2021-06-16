@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { Member } from 'src/app/_models/member';
 import { Pagination } from 'src/app/_models/pagination';
+import { Rating } from 'src/app/_models/rating';
 import { User } from 'src/app/_models/user';
 import { UserParams } from 'src/app/_models/userParams';
 import { AccountService } from 'src/app/_services/account.service';
@@ -14,6 +15,7 @@ import { MembersService } from 'src/app/_services/members.service';
   styleUrls: ['./member-list.component.css']
 })
 export class MemberListComponent implements OnInit {
+  ratings: Partial<Rating[]>;
   members: Member[];
   pagination: Pagination;
   userParams:UserParams;
@@ -46,6 +48,7 @@ export class MemberListComponent implements OnInit {
     this.memberService.setUserParams(this.userParams);
     this.loadMembers();
   }
+  
 
 
 }

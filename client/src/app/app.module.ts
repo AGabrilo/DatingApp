@@ -34,6 +34,7 @@ import { RolesModalComponent } from './modals/roles-modal/roles-modal.component'
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { RatingComponent } from './rating/rating.component';
 import { RegisterModalComponent } from './modals/register-modal/register-modal.component';
+import { RatingModalComponent } from './modals/rating-modal/rating-modal.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { RegisterModalComponent } from './modals/register-modal/register-modal.c
     RolesModalComponent,
     PhotoEditorComponent,
     RatingComponent,
-    RegisterModalComponent
+    RegisterModalComponent,
+    RatingModalComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ import { TabDirective, TabsetComponent } from 'ngx-bootstrap/tabs';
 import { Message } from 'src/app/_models/message';
 import { MessageService } from 'src/app/_services/message.service';
 import { ToastrService } from 'ngx-toastr';
+import { Rating } from 'src/app/_models/rating';
 
 @Component({
   selector: 'app-member-detail',
@@ -26,6 +27,8 @@ export class MemberDetailComponent implements OnInit {
   isReadonly = false;
   ratingValue: number;
   username: string;
+  IsRatedByUser=0;
+  ratings: Partial<Rating>;
   
 
   overStar: number | undefined;
@@ -92,11 +95,14 @@ export class MemberDetailComponent implements OnInit {
     this.overStar = void 0;
   }
    addRating(member: Member,rate: number) {
+    this.IsRatedByUser=1;
     this.ratingValue=rate;
     console.log(this.ratingValue);
     this.memberService.addRating(member.username,this.ratingValue).subscribe(() => {
       this.toastr.success('You have rated ' + member.knownAs);
     })
   }
+
+ 
 
 }

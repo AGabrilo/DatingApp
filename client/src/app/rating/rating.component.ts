@@ -11,11 +11,8 @@ import { MembersService } from '../_services/members.service';
   styleUrls: ['./rating.component.css']
 })
 export class RatingComponent implements OnInit {
-  ratings: Partial<Member[]>;
-  pageNumber=1;
-  pageSize=5;
-  pagination: Pagination;
-
+  ratings: Partial<Rating[]>;
+  
   constructor(private memberService: MembersService) { }
 
   ngOnInit(): void {
@@ -26,12 +23,17 @@ export class RatingComponent implements OnInit {
       this.ratings=rate;
     })
   }
-
-  // loadRatings(){
-  //   this.memberService.getR(this.predicate,this.pageNumber,this.pageSize).subscribe(response => {
-  //     this.ratings= response.result;
-  //     this.pagination=response.pagination;
-  //   })
-  // }
+  
+  getRatingSum=function(r:number[]){
+    var tot=0;
+    var count=0;
+    for (var i = 0; i < r.length; i++) {
+      tot += r[i]
+      count++;
+    }
+    if(tot==0)
+    return tot;
+      return tot/count;
+  }
 
 }

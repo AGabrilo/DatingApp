@@ -2,6 +2,14 @@
 	<div id="hero-img"></div>
 	<div id="profile-img">
         <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.knownAs}}">
+		<div class="ratingDiv" *ngFor="let rate of ratings">
+						
+					<button routerLink='/members/{{member.username}}' class="rate-button" *ngIf="member.username==rate.username">
+						{{getRatingSum(rate.ratings)| number : '1.0-2'}}
+						<i class='fa fa-star'></i>
+					</button>
+					
+			 </div>
 		
 	</div>
 	<div id="content">
@@ -14,6 +22,7 @@
 
             <a routerLink='/members/{{member.username}}' 
             [queryParams]='{tab: 3}'><i class="fa fa-envelope"></i> </a>
+			
 		
 	</div>
 </div>

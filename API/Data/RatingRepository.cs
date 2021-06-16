@@ -32,6 +32,11 @@ namespace API.Data
         {
            return await _context.Ratings.FindAsync(sourceUserId,ratedUserId);
         }
+           public async Task<Rating> Check(int sourceUserId, int ratedUserId)
+        {
+           return await _context.Ratings.FindAsync(sourceUserId,ratedUserId);
+        }
+
 
        public async Task<PagedList<RatingDto>> GetUserRatings(RatingParams ratingParams)
         {

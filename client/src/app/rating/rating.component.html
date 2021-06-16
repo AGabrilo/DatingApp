@@ -1,33 +1,33 @@
-<div class="text-center mt-3">
-   
-</div>
-
+<!-- <div class="something">
 <div class="container mt-3">
     <div class="row">
-        <div class="btn-group" name="predicate">
-            <button class="btn btn-primary"(click)="loadRatings()">Members I rated</button>
-            <button class="btn btn-primary" (click)="loadRatings()">Members who rated me</button>
-        </div>
+            <h1>Members I rated</h1>
+            
     </div>
 </div>
 
 <div class="row mt-3">
-    <div class="col-2" *ngFor="let rate of ratings">
-       <p>{{rate.rateValue}}</p>
+    <div class="row" *ngFor="let rate of ratings">
+        <p>{{rate.id}}</p>
+        
     </div>
+</div> -->
+<div class="something">
+<div class="row">
+    <table class="table">
+        <tr>
+            <th style="width: 20%;">Id</th>
+            <th style="width: 30%;">Username</th>
+            <th style="width: 30%;">Ratings</th>
+            <th style="width: 20%;">Total</th>
+        </tr>
+        <tr *ngFor="let rate of ratings">
+            <td>{{rate.id}}</td>
+            <td>{{rate.username}}</td>
+            <td>{{rate.ratings}}</td>
+            <td>{{getRatingSum(rate.ratings)}}</td>
+
+        </tr>
+    </table>
 </div>
-
-<div class="d-flex justify-content-center" *ngIf="pagination">
-    <pagination 
-    [boundaryLinks]="true" 
-    [totalItems]="pagination.totalItems"
-    [itemsPerPage]="pagination.itemsPerPage"
-    [(ngModel)]="pagination.currentPage"
-    (pageChanged)="pageChanged($event)"
-    previousText="&lsaquo;"
-    nextText="&rsaquo;" 
-    firstText="&laquo;" 
-    lastText="&raquo;">
-</pagination>
-
 </div>

@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <h2 class="text-center text-primary">Rate </h2>
+</div>
+<div class="modal-body">
+    <div>
+        <rating [(ngModel)]="rate" [max]="max" [readonly]="isReadonly" (ngModelChange)="addRating(member,$event)" (onHover)="hoveringOver($event)"
+            (onLeave)="resetStar()"></rating>
+            <p>{{rate}}</p>
+      
+    </div>
+        <div class="modal-footer">
+            <div class="form-group text-center">
+                <button type="button" class="btn btn-danger" (click)="bsModalRef.hide()">Cancel</button>
+            </div>
+        </div>

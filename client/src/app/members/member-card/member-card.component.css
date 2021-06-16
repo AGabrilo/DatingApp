@@ -109,3 +109,18 @@ a {
 a:hover {
 	color:rgb(226, 103, 8);
 }
+
+.ratingDiv{
+	position: absolute;
+	bottom: 170px;
+	right: 50px;
+    height: 2px;
+}
+
+.rate-button{
+	border-radius: 22px;
+	background-color: #8069a1;
+	font-size: 18px;
+	border: 2px solid #ffffff;
+	
+}

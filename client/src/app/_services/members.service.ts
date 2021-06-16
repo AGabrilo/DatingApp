@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { of, pipe } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { RatingComponent } from '../rating/rating.component';
 import { Member } from '../_models/member';
 import { PaginatedResult } from '../_models/pagination';
 import { Rating } from '../_models/rating';
@@ -104,14 +105,8 @@ export class MembersService {
   } 
 
   getRate(){
-    return this.http.get<Partial<Member[]>>(this.baseUrl + 'ratings/users-with-ratings')
+    return this.http.get<Partial<Rating[]>>(this.baseUrl + 'ratings/users-with-ratings')
   }
-
-  getR(predicate: string, pageNumber, pageSize) {
-    let params = getPaginationHeaders(pageNumber, pageSize);
-    params = params.append('predicate', predicate);
-    return getPaginatedResult<Partial<User[]>>(this.baseUrl + 'ratings', params, this.http);
-  }
-
+  
 
 }
