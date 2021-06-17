@@ -15,6 +15,7 @@ import { Rating } from "./rating";
     interests:    string;
     city:         string;
     country:      string;
+    value:        number;
     rateValue:    Rating[];
     photos:       Photo[];
 }

@@ -35,6 +35,8 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
 import { RatingComponent } from './rating/rating.component';
 import { RegisterModalComponent } from './modals/register-modal/register-modal.component';
 import { RatingModalComponent } from './modals/rating-modal/rating-modal.component';
+import { SearchComponent } from './search/search.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -63,7 +65,9 @@ import { RatingModalComponent } from './modals/rating-modal/rating-modal.compone
     PhotoEditorComponent,
     RatingComponent,
     RegisterModalComponent,
-    RatingModalComponent
+    RatingModalComponent,
+    SearchComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

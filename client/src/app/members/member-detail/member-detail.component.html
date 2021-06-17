@@ -23,13 +23,14 @@
                 <strong>Member since:</strong>
                 <p>{{member.created | date: 'dd MMM yyyy'}}</p>
             </div>
-            <div >
+            <div *ngIf="ratings==0">
                 <rating [(ngModel)]="rate" [max]="max" [readonly]="isReadonly" [disabled] (ngModelChange)="addRating(member,$event)" (onHover)="hoveringOver($event)"
                     (onLeave)="resetStar()"></rating>
                     <p>{{rate}}</p>
                     
               
             </div>
+           
             </div>
             </div>
     

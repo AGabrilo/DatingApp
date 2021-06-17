@@ -11,6 +11,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { TimeagoModule } from 'ngx-timeago';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { RatingModule } from 'ngx-bootstrap/rating';
+import { NgSearchFilterModule } from 'ng-search-filter';
 
 @NgModule({
   declarations: [],
@@ -28,7 +29,8 @@ import { RatingModule } from 'ngx-bootstrap/rating';
     ButtonsModule.forRoot(),
     TimeagoModule.forRoot(),
     ModalModule.forRoot(),
-    RatingModule.forRoot()
+    RatingModule.forRoot(),
+    NgSearchFilterModule
   ],
   exports: [
     BsDropdownModule,
@@ -41,7 +43,9 @@ import { RatingModule } from 'ngx-bootstrap/rating';
     ButtonsModule,
     TimeagoModule,
     ModalModule,
-    RatingModule
+    RatingModule,
+    NgSearchFilterModule
+    
   ]
 })
 export class SharedModule { }

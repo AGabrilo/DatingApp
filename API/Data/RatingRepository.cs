@@ -16,51 +16,45 @@ namespace API.Data
     {
         // 
         private readonly DataContext _context;
-        public RatingRepository(DataContext context)
+        private readonly IMapper _mapper;
+        public RatingRepository(DataContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
-        public  async Task<Rating> GetRatingsOfUser(RatingParams ratingParams)
+        public async Task<Rating> GetRatingsOfUser(RatingParams ratingParams)
         {
-             return await _context.Ratings
-            .Include(x => x.RateValue)
-            .FirstOrDefaultAsync(x => x.RatedUserId==ratingParams.UserId);
+            return await _context.Ratings
+           .Include(x => x.RateValue)
+           .FirstOrDefaultAsync(x => x.RatedUserId == ratingParams.UserId);
         }
 
         public async Task<Rating> GetUserRating(int sourceUserId, int ratedUserId)
         {
-           return await _context.Ratings.FindAsync(sourceUserId,ratedUserId);
+            return await _context.Ratings.FindAsync(sourceUserId, ratedUserId);
         }
-           public async Task<Rating> Check(int sourceUserId, int ratedUserId)
+        public async Task<Rating> Check(int sourceUserId, int ratedUserId)
         {
-           return await _context.Ratings.FindAsync(sourceUserId,ratedUserId);
+            return await _context.Ratings.FindAsync(sourceUserId, ratedUserId);
         }
 
 
-       public async Task<PagedList<RatingDto>> GetUserRatings(RatingParams ratingParams)
+        public async Task<PagedList<RatingDto>> GetUserRatings(RatingParams ratingParams)
         {
-            var users= _context.Users.OrderBy(u => u.UserName).AsQueryable();
-            var ratings= _context.Ratings.AsQueryable();
+            var users = _context.Users.OrderBy(u => u.UserName).AsQueryable();
+            var ratings = _context.Ratings.AsQueryable();
 
-            if(ratingParams.Predicate== "rated")
-            {
-                ratings=ratings.Where(rate => rate.RatingUserId==ratingParams.UserId);
-                users= ratings.Select(rate => rate.RatedUser);
-            }
-            if(ratingParams.Predicate=="ratedBy")
-            {
-                ratings=ratings.Where(rate => rate.RatedUserId==ratingParams.UserId);
-                users= ratings.Select(rate => rate.RatingUser);
-            }
+                ratings = ratings.Where(rate => rate.RatingUserId == ratingParams.UserId);
+                users = ratings.Select(rate => rate.RatedUser);
+            
 
-            var ratedUsers= users.Select(user => new RatingDto{
-              Username=user.UserName,
-               KnownAs=user.KnownAs,
-               Age=user.DateOfBirth.CalculateAge(),
-               PhotoUrl=user.Photos.FirstOrDefault(p => p.IsMain).Url,
-               City=user.City,
-               Id=user.Id
+            var ratedUsers = ratings.Select(user => new RatingDto
+            {
+                RatingUserId = user.RatingUserId,
+                RatedUserId=user.RatedUserId,
+                RateValue=user.RateValue
+               
             });
 
             return await PagedList<RatingDto>.CreateAsync(ratedUsers,ratingParams.PageNumber,ratingParams.PageSize);
@@ -69,7 +63,13 @@ namespace API.Data
         {
             return await _context.Users
             .Include(x => x.RatedUsers)
-            .FirstOrDefaultAsync(x => x.Id==userId);
+            .FirstOrDefaultAsync(x => x.Id == userId);
+        }
+        public async Task<IEnumerable<RatingDto>> GetRatingsAsync()
+        {
+            return await _context.Ratings
+            .ProjectTo<RatingDto>(_mapper.ConfigurationProvider)
+            .ToListAsync();
         }
     }
 }

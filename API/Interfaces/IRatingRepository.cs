@@ -13,6 +13,7 @@ namespace API.Interfaces
         Task<PagedList<RatingDto>> GetUserRatings(RatingParams ratingParams);
         Task<AppUser> GetUserWithRatings(int userId);
         Task<Rating> GetRatingsOfUser(RatingParams ratingParams);
+        Task<IEnumerable<RatingDto>> GetRatingsAsync();
 
     }
 }

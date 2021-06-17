@@ -56,6 +56,7 @@ export class MemberDetailComponent implements OnInit {
       }
     ]
     this.galleryImages=this.getImages();
+    this.loadRatingStatus();
   }
 
   getImages(): NgxGalleryImage[] {
@@ -102,7 +103,12 @@ export class MemberDetailComponent implements OnInit {
       this.toastr.success('You have rated ' + member.knownAs);
     })
   }
+    loadRatingStatus(){ 
+    this.memberService.getRatingStatus(this.member.username).subscribe(r => { 
+      this.ratings = r; 
+      console.log(this.ratings)
+    }) 
 
- 
+  } 
 
 }

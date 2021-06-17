@@ -29,6 +29,12 @@ namespace API.Data
             .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
             .SingleOrDefaultAsync();
         }
+         public async Task<IEnumerable<MemberDto>> GetMemberssAsync()
+        {
+            return await _context.Users
+            .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
+            .ToListAsync();
+        }
 
         public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams)
         {

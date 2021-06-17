@@ -83,6 +83,50 @@ namespace API.Controllers
            }).ToListAsync();
             return Ok(ratings);
         }
+
+        [HttpGet("check/{username}")] 
+        public async Task<ActionResult> HasRated(string username) 
+        { 
+           var ratingUserId = User.GetUserId(); 
+           var ratedUser = await _userRepository.GetUserByUsernameAsync(username); 
+           var ratingUser = await _ratingRepository.GetUserWithRatings(ratingUserId); 
+           var userRate = await _ratingRepository.Check(ratingUserId, ratedUser.Id); 
+           var user=0;
+
+            if (userRate != null) { 
+                 user=1;
+                return Ok(user); 
+            } 
+            
+            return Ok(user); 
+
+        } 
+        // [HttpGet("users-rated")]
+        // public async Task<ActionResult> GetRatedUsers()
+        // {
+        //     var ratings = await _userManager.Users.Include(r => r.RatedUsers).Select(u => new {
+        //        u.Id,
+        //        Username=u.UserName,
+        //        rate=u.RatedUsers.Select(r=> r.RateValue)
+        //    }).ToListAsync();
+        //     return Ok(ratings);
+        // }
+
+        // [HttpGet("users-rated")] 
+        // public async Task<ActionResult<IEnumerable<RatingDto>>> GetRatedUsers()
+        // {
+        //    var users = await _ratingRepository.GetRatingsAsync();
+        //     return Ok(users);
+        // }
+        [HttpGet("users-rated")]
+        public async Task<ActionResult<IEnumerable<RatingDto>>> GetUserRatings([FromQuery]RatingParams ratingParams)
+        {
+            ratingParams.UserId=User.GetUserId();
+            var users= await _ratingRepository.GetUserRatings(ratingParams);
+
+            Response.AddPaginationHeader(users.CurrentPage, users.PageSize,users.TotalCount,users.TotalPages);
+            return Ok(users);
+        }
         
     }
 }

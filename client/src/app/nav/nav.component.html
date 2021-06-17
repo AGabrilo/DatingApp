@@ -12,11 +12,11 @@
             <li class="nav-item">
                 <a class="nav-link" routerLink='/messages'routerLinkActive='active'>Messages</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" routerLink='/ratings'routerLinkActive='active'>Ratings</a>
-            </li>
-            <li *appHasRole='["Admin", "Moderator"]' class="nav-item">
-                <a class="nav-link" routerLink='/admin'routerLinkActive='active'>Admin</a>
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link" routerLink='/search'routerLinkActive='active'> Search  <i class="fa fa-search"></i></a>
             </li>
         </ng-container>
     </ul>
@@ -26,6 +26,8 @@
         <a class="dropdown-toggle text-light ml-2" dropdownToggle>Welcome {{user.knownAs || user.username | titlecase}}</a>
         <div class="dropdown-menu mt-3" *dropdownMenu>
             <a routerLink='/member/edit' class="dropdown-item">Edit Profile</a>
+            <div class="dropdown-divider"></div>
+            <a *appHasRole='["Admin", "Moderator"]' class="dropdown-item" routerLink='/admin'routerLinkActive='active'>Admin</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" (click)="logout()" >Logout</a>
         </div>

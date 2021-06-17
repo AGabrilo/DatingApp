@@ -61,6 +61,9 @@ export class MembersService {
         return response;
       }))
   }
+  getM() {
+    return this.http.get<Member[]>(this.baseUrl + 'users/searching');
+  }
 
   getMember(username: string) {
     const member = [...this.memberCache.values()]
@@ -107,6 +110,15 @@ export class MembersService {
   getRate(){
     return this.http.get<Partial<Rating[]>>(this.baseUrl + 'ratings/users-with-ratings')
   }
-  
+   
+
+  getRatingStatus(username: string) {
+    return this.http.get<Partial<Rating>>(this.baseUrl + 'ratings/check/' + username);
+  }
+
+  getIt(pageNumber, pageSize) {
+    let params = getPaginationHeaders(pageNumber, pageSize);
+    return getPaginatedResult<Partial<Rating[]>>(this.baseUrl + 'search', params, this.http);
+  }
 
 }

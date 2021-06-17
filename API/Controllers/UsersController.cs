@@ -53,6 +53,13 @@ namespace API.Controllers
 
         }
 
+         [HttpGet("searching")] 
+        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsersForSearch()
+        {
+           var users = await _userRepository.GetMemberssAsync();
+            return Ok(users);
+        }
+
         [HttpGet("{username}", Name = "GetUser")]  //api/users/3 for example
         public async Task<ActionResult<MemberDto>> GetUsers(string username)
         {

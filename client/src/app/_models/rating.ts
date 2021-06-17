@@ -7,4 +7,5 @@ export interface Rating {
     age:          number;
     knownAs:      string;
     rateValue: number[];
+    rate:number;
 }

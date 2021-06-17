@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
-import { RatingModalComponent } from 'src/app/modals/rating-modal/rating-modal.component';
 import { Member } from 'src/app/_models/member';
 import { Pagination } from 'src/app/_models/pagination';
 import { Rating } from 'src/app/_models/rating';
@@ -23,9 +21,8 @@ export class MemberCardComponent implements OnInit {
   pageNumber=1;
   pageSize=20;
   ratingMode = false;
-  bsModalRef: BsModalRef;
 
-  constructor(private modalService: BsModalService,private memberService: MembersService, private toastr: ToastrService) { }
+  constructor(private memberService: MembersService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.loadRatings();
@@ -53,10 +50,6 @@ export class MemberCardComponent implements OnInit {
     return tot;
       return tot/count;
   }
-  openRatingModal() {
-
-    this.bsModalRef = this.modalService.show(RatingModalComponent);
-
-  }
+  
 
 }
