@@ -1,0 +1,69 @@
+.c{
+    margin-top: 60px;
+    position:relative;
+}
+.col-7{
+    background-image:url("/assets/contact-us.jpg") ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.card-img-top{
+ height: 200px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1{
+    margin: 50px 0px 50px 50px;
+}
+
+.card-deck{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+h3{
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+  input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  
+  .contai {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 10px;
+  }
+  
+ 
+  .column {
+    float: left;
+    width: 50%;
+    margin-top: 6px;
+    padding: 20px;
+  }
+  
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  

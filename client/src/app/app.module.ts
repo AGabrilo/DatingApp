@@ -37,6 +37,9 @@ import { RegisterModalComponent } from './modals/register-modal/register-modal.c
 import { RatingModalComponent } from './modals/rating-modal/rating-modal.component';
 import { SearchComponent } from './search/search.component';
 import { FooterComponent } from './footer/footer.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
+import { ContactInputComponent } from './_forms/contact-input/contact-input.component';
 
 
 @NgModule({
@@ -67,7 +70,10 @@ import { FooterComponent } from './footer/footer.component';
     RegisterModalComponent,
     RatingModalComponent,
     SearchComponent,
-    FooterComponent
+    FooterComponent,
+    AboutComponent,
+    ContactComponent,
+    ContactInputComponent
   ],
   imports: [
     BrowserModule,

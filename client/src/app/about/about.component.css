@@ -1,0 +1,27 @@
+.container{
+    margin-top: 100px;
+    display: block;
+}
+
+.title{
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.about-info{
+    padding-bottom: 20px;
+}
+
+.about-pic{
+    height: 80%;
+    padding-left: 40px;
+}
+
+.two{
+ background-color: blue;
+ background-image:linear-gradient(to bottom,rgb(33, 33, 33),transparent),url("/assets/about4.jpg") ;
+ background-position: center; 
+ background-repeat: no-repeat; 
+ background-size: cover; 
+ height:300px;
+}

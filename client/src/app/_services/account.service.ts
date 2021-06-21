@@ -55,4 +55,7 @@ export class AccountService {
   getDecodedToken(token){
      return JSON.parse(atob(token.split('.')[1]));
   }
+  sendEmail(url,data){
+    return this.http.post(url,data);
+   }
 }

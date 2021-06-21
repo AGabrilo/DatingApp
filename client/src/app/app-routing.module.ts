@@ -16,6 +16,8 @@ import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 import { AdminGuard } from './_guards/admin.guard';
 import { RatingComponent } from './rating/rating.component';
 import { SearchComponent } from './search/search.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -32,6 +34,8 @@ const routes: Routes = [
       {path: 'admin', component: AdminPanelComponent, canActivate: [AdminGuard]},
       {path: 'ratings', component: RatingComponent},
       {path: 'search', component: SearchComponent},
+      {path: 'about', component: AboutComponent},
+      {path: 'contact', component: ContactComponent},
     ]
   },
   {path: 'errors', component: TestErrorsComponent},
